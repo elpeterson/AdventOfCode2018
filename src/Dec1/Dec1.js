@@ -5,36 +5,38 @@ class Dec1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: "",
-      puzzleSolution: ""
+      frequencies: "",
+      resultingFrequency: "",
+      repeatedFrequency: ""
     };
   }
 
   result = 0;
 
   puzzleLoop() {
-    let puzzleArray = this.state.inputValue.split(" ");
+    let frequencyArray = this.state.frequencies.split(" ");
 
-    for (let i = 0; i < puzzleArray.length; i++) {
-      if (puzzleArray[i].includes("+")) {
-        this.result += Number(puzzleArray[i].substring(0));
+    for (let i = 0; i < frequencyArray.length; i++) {
+      if (frequencyArray[i].includes("+")) {
+        this.result += Number(frequencyArray[i].substring(0));
       }
 
-      if (puzzleArray[i].includes("-")) {
-        this.result -= Number(puzzleArray[i].substring(1));
+      if (frequencyArray[i].includes("-")) {
+        this.result -= Number(frequencyArray[i].substring(1));
       }
     }
   }
 
   solvePuzzle() {
     this.puzzleLoop();
-
-    this.setState({ puzzleSolution: this.result });
+    this.setState({ resultingFrequency: this.result });
+    if (true) {
+    }
   }
 
-  updateInputValue(evt) {
+  updateFequencies(evt) {
     this.setState({
-      inputValue: evt.target.value
+      frequencies: evt.target.value
     });
   }
 
@@ -44,11 +46,11 @@ class Dec1 extends Component {
         <h1>December 1st</h1>
         <input
           type="text"
-          value={this.state.inputValue}
-          onChange={evt => this.updateInputValue(evt)}
+          value={this.state.frequencies}
+          onChange={evt => this.updateFequencies(evt)}
         />
         <button onClick={evt => this.solvePuzzle(evt)}>Solve Puzzle!</button>
-        <p>The Solution is: {this.state.puzzleSolution}</p>
+        <p>The Solution is: {this.state.resultingFrequency}</p>
       </div>
     );
   }
