@@ -10,22 +10,26 @@ class Dec1 extends Component {
     };
   }
 
-  solvePuzzle() {
-    let result = 0;
+  result = 0;
+
+  puzzleLoop() {
     let puzzleArray = this.state.inputValue.split(" ");
-    let resultArray = [];
 
     for (let i = 0; i < puzzleArray.length; i++) {
       if (puzzleArray[i].includes("+")) {
-        result += Number(puzzleArray[i].substring(0));
+        this.result += Number(puzzleArray[i].substring(0));
       }
 
       if (puzzleArray[i].includes("-")) {
-        result -= Number(puzzleArray[i].substring(1));
+        this.result -= Number(puzzleArray[i].substring(1));
       }
     }
+  }
 
-    this.setState({ puzzleSolution: result });
+  solvePuzzle() {
+    this.puzzleLoop();
+
+    this.setState({ puzzleSolution: this.result });
   }
 
   updateInputValue(evt) {
