@@ -13,7 +13,7 @@ class Dec1 extends Component {
 
   result = 0;
 
-  puzzleLoop() {
+  frequencyLoop() {
     let frequencyArray = this.state.frequencies.split(" ");
 
     for (let i = 0; i < frequencyArray.length; i++) {
@@ -28,7 +28,7 @@ class Dec1 extends Component {
   }
 
   solvePuzzle() {
-    this.puzzleLoop();
+    this.frequencyLoop();
     this.setState({ resultingFrequency: this.result });
     if (true) {
     }
