@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Dec1.scss';
 
 class Dec1 extends Component {
   constructor(props) {
@@ -61,7 +60,7 @@ class Dec1 extends Component {
           onChange={evt => this.updateFequencies(evt)}
         />
         <button onClick={evt => this.solvePuzzle(evt)}>Solve Puzzle!</button>
-        <p>The Solution is: {this.state.resultingFrequency}</p>
+        <p>The Resulting Frequency is: {this.state.resultingFrequency}</p>
         <p>The Repeated Frequency is: {this.state.repeatedFrequency}</p>
       </div>
     );
