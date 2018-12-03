@@ -14,6 +14,7 @@ class Dec1 extends Component {
   result = 0;
   frequencyArray = [];
   resultsArray = [0];
+  repeatFrequencyFound = false;
 
   frequencyLoop() {
     for (let i = 0; i < this.frequencyArray.length; i++) {
@@ -25,6 +26,12 @@ class Dec1 extends Component {
         this.result -= Number(this.frequencyArray[i].substring(1));
       }
 
+      if (this.resultsArray.includes(this.result)) {
+        this.repeatFrequencyFound = true;
+        this.setState({ repeatedFrequency: this.result });
+        break;
+      }
+
       this.resultsArray.push(this.result);
     }
   }
@@ -33,6 +40,9 @@ class Dec1 extends Component {
     this.frequencyArray = this.state.frequencies.split(' ');
     this.frequencyLoop();
     this.setState({ resultingFrequency: this.result });
+    while (this.repeatFrequencyFound === false) {
+      this.frequencyLoop();
+    }
   }
 
   updateFequencies(evt) {
