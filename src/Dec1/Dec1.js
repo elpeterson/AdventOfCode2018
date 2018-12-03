@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import "./Dec1.scss";
+import React, { Component } from 'react';
+import './Dec1.scss';
 
 class Dec1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      frequencies: "",
-      resultingFrequency: "",
-      repeatedFrequency: ""
+      frequencies: '',
+      resultingFrequency: '',
+      repeatedFrequency: '',
     };
   }
 
@@ -16,27 +16,13 @@ class Dec1 extends Component {
   resultsArray = [0];
 
   frequencyLoop() {
-    let frequencyArray = this.frequencyArray;
-
-    for (let i = 0; i < frequencyArray.length; i++) {
-      if (frequencyArray[i].includes("+")) {
-        this.result += Number(frequencyArray[i].substring(0));
+    for (let i = 0; i < this.frequencyArray.length; i++) {
+      if (this.frequencyArray[i].includes('+')) {
+        this.result += Number(this.frequencyArray[i].substring(0));
       }
 
-      if (frequencyArray[i].includes("-")) {
-        this.result -= Number(frequencyArray[i].substring(1));
-      }
-
-      console.log("result = " + this.result);
-      console.log("results array = " + this.resultsArray);
-      console.log("repeated frequency = " + this.state.repeatedFrequency);
-
-      if (this.state.repeatedFrequency === "") {
-        for (let r = 0; r < this.resultsArray.length; r++) {
-          if (this.result === this.resultsArray[r]) {
-            this.setState({ repeatedFrequency: this.result });
-          }
-        }
+      if (this.frequencyArray[i].includes('-')) {
+        this.result -= Number(this.frequencyArray[i].substring(1));
       }
 
       this.resultsArray.push(this.result);
@@ -44,17 +30,14 @@ class Dec1 extends Component {
   }
 
   solvePuzzle() {
-    this.frequencyArray = this.state.frequencies.split(" ");
+    this.frequencyArray = this.state.frequencies.split(' ');
     this.frequencyLoop();
     this.setState({ resultingFrequency: this.result });
-    if (this.state.repeatedFrequency === "") {
-      this.frequencyLoop();
-    }
   }
 
   updateFequencies(evt) {
     this.setState({
-      frequencies: evt.target.value
+      frequencies: evt.target.value,
     });
   }
 
